@@ -1,0 +1,28 @@
+﻿@model GameStore.Models.Purchase
+
+@{
+    ViewBag.Title = "Buy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var game = ViewBag.Game;
+    var user = ViewBag.User;
+}
+
+
+<h4>Оформление заказа на игру "@game.Name"</h4>
+<h3>Выберите способ оплаты:</h3>
+<div class="payImages">
+    <button type="button" onclick="document.location='@Url.Action("YandexPay","Payment", new {gameId = game.Id, userId = user.Id })'">
+        <img src="https://photo.virtualbrest.by/uploads/2017/08/08/image011.jpg" class="payImg">
+    </button>
+    <button type="button" onclick="document.location='@Url.Action("BankPay","Payment",new {gameId = game.Id,userId = user.Id })'">
+        <img src="https://struzhka.com/image/catalog/masercard-w450-o.jpg" class="payImg">
+    </button>
+    <button type="button" onclick="document.location='@Url.Action("WebMoneyPay","Payment",new {gameId = game.Id,userId = user.Id })'">
+        <img src="https://tb.by/upload/temp/product-media/product-media-04.jpg" class="payImg">
+    </button>
+    <div class="form">
+        <div class="field">
+            <button style="margin-top:100px;" type="button" onclick="document.location='@Url.Action("StorePage","Home",new { search = " "}))'">Отмена</button>
+        </div>
+    </div>
+</div>

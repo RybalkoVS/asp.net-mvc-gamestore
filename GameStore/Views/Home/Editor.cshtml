@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Editor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 0;
+    string search = ViewBag.Search;
+}
+
+@{
+    var users = ViewBag.users;
+}
+<div class="userMenu">
+    <a onclick="document.location='@Url.Action("StorePage","Home", new { search = " "})'">На главную</a>
+    <button style="color:black; float:right; margin-right:150px;"class="editor" onclick="document.location='@Url.Action("AddGame", "Home")'">Добавить продукт</button>
+    <div id="search">
+        @using (Html.BeginForm("Editor", "Home", FormMethod.Get))
+        {
+            <input type="text" name="search" />
+            <input style="color:black" type="submit" value="Поиск" />
+        }
+    </div>
+</div>
+<div>
+    @foreach (var game in ViewBag.Games)
+    {
+        if (game.Name.ToLower().Contains(search.ToLower()) || search == "")
+        {
+        <div class="gameImage">
+            <img src="@game.Image">
+            <p>Название: @game.Name</p>
+            <p>Год выхода: @game.ReleaseYear</p>
+            <p>Цена: @game.Price$</p>
+            <p>
+                <button style="color:black" type="button" onclick="document.location='@Url.Action("Removegame", "Home", new { gameid = game.Id })'">Удалить</button>
+                <button style="color:black" type="button" onclick="document.location='@Url.Action("ChangeGame", "Home", new { gameid = game.Id })'">Изменить</button>
+            </p>
+        </div>
+            counter++;
+            if (counter == 6)
+            {
+            <br>;
+                counter = 0;
+            }
+        }
+    }
+</div>

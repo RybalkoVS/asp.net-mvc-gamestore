@@ -1,0 +1,50 @@
+﻿@model GameStore.Models.Purchase
+@{
+    ViewBag.Title = "BankPay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var game = ViewBag.Game;
+    var user = ViewBag.User;
+}
+
+@using (Html.BeginForm())
+{
+<div class="form">
+    <img src="https://struzhka.com/image/catalog/masercard-w450-o.jpg" class="payImg" style="width:190px">
+    <div class="fields_block">
+        <label>Номер карты(16 цифр):</label>
+        <div class="field">
+            <input class="custominput" type="text" required pattern="[0-9]{16}">
+        </div>
+    </div>
+    <div class="fields_block">
+        <label>Срок действия карты:</label>
+        <div class="field">
+            <input class="custominput" type="date" required>
+        </div>
+    </div>
+    <div class="fields_block">
+        <label>Код с обратной стороны(3 цифры):</label>
+        <div class="field">
+            <input type="text" class="custominput" pattern="[0-9]{3}" required>
+        </div>
+    </div>
+    <div class="fields_block">
+        <div class="field">
+            <label>Адрес электронной почты:</label>
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="fields_block">
+        <div class="field">
+            <label>Сумма: @game.Price$</label>
+        </div>
+    </div>
+    <input type="hidden" name="UserId" value="@user.Id" required>
+    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+    <div class="field">
+        <button type="button" onclick="document.location='@Url.Action("StorePage","Home",new {search = " "}))'">Отмена</button>
+        <button type="submit">Подтвердить</button>
+    </div>
+</div>
+}

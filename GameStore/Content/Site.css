@@ -1,0 +1,67 @@
+﻿body {
+    background-image: url('https://cutewallpaper.org/21/windows-7-black-background/73+-Windows-Black-Background-on-WallpaperSafari.jpg');
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+}
+
+.gameImage {
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-left: 75px;
+    display: table-cell;
+    padding-top: 50px;
+}
+img {
+    width: 220px;
+    height: 350px;
+    border-radius: 7px;
+}
+a{
+    text-decoration:none;
+    color: white;
+}
+a:hover{
+    color:Red;
+    cursor:pointer;
+    text-decoration:none;
+}
+.userMenu {
+
+    margin-top: 30px;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    padding-left: 100px;
+}
+#editor{
+    color: black;
+    float: right;
+    margin-right: 100px;
+    font-size: 100%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+#search {
+    color: black;
+    margin-top: 10px;
+    margin-right: 100px;
+    font-size: 100%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+#buyGame {
+    color: black;
+    font-size: 100%;
+}
+.payImages {
+    border-radius: 10px;
+    display: table-cell;
+    padding: 25px;
+    position: absolute;
+    left: 38%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.payImg{
+    width:100px;
+    height:80px;
+    margin-top:20px;
+    margin-right:20px;
+}

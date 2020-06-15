@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <form name="logForm" method="get" target="_blank">
+        <div class="fields_block">
+            <div class="field">
+                <label for="Log">Логин:</label>
+                <input type="text" id="Log" name="login" required><br><br>
+            </div>
+            <div class="field">
+                <label for="pass">Пароль:</label>
+                <input type="password" id="pass" name="password" required><br><br>
+            </div>
+            <div class="field">
+                <button type="submit">Войти</button>
+                <button type="button" onclick="location.href='@Url.Action("Register", "Home")'">Зарегистрироваться</button>
+            </div>
+        </div>
+    </form>
+</div>
+

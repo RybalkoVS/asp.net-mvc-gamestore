@@ -1,0 +1,55 @@
+﻿@model GameStore.Models.Game
+
+@{
+    ViewBag.Title = "ChangeGame";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var game = ViewBag.Game;
+}
+
+@using (Html.BeginForm())
+{
+
+<div class="form">
+    <h4>Редактирование</h4>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="fields_block">
+        <label>Название:</label>
+        <div class="field">
+            <input type="text" name="name" value="@game.Name" required>
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="fields_block">
+        <label>Цена:</label>
+        <div class="field">
+            <input type="text" name="price" value="@game.Price" required>
+            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="fields_block">
+        <label>Год выхода:</label>
+        <div class="field">
+            <input type="text" name="releaseyear" value="@game.ReleaseYear" required>
+            @Html.ValidationMessageFor(model => model.ReleaseYear, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="fields_block">
+        <label>Изображение:</label>
+        <div class="field">
+            <input type="text" name="image" value="@game.Image" required>
+            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <input type="hidden" name="Id" value="@game.Id" required>
+    @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+    <div class="fields_block">
+        <div class="field">
+            <button type="button" onclick="document.location='@Url.Action("Editor","Home",new {search = " "}))'">Отмена</button>
+            <button type="submit">Изменить</button>
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "StorePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 0;
+    string search = ViewBag.Search;
+}
+
+
+<div class="userMenu">
+    @{
+        var user = ViewBag.Identity;
+    }
+    <div>
+        @user.Name/<a onclick="document.location='@Url.Action("Login","Account")'">Выйти</a>
+        <div>
+            <button id="editor" type="button" onclick="document.location='@Url.Action("Editor","Home", new { search = " "})'">Рeдактор</button>
+        </div>
+        <div id="search">
+            @using (Html.BeginForm("StorePage", "Home", FormMethod.Get))
+            {
+                <input type="text" name="search" />
+                <input style="color:black" type="submit" value="Поиск" />
+            }
+        </div>
+    </div>
+    </div>
+<div>
+    @foreach (var game in ViewBag.Games)
+    {
+        if (game.Name.ToLower().Contains(search.ToLower()) || search == "")
+        {
+        <div class="gameImage">
+            <img src="@game.Image">
+            <p>Название: @game.Name</p>
+            <p>Год выхода: @game.ReleaseYear</p>
+            <p>Цена: @game.Price$</p>
+            <p>
+                <button id="buyGame" type="button" onclick="document.location='@Url.Action("Buy", "Payment", new { gameId = game.Id, userName = user.Name })'">Купить</button>
+            </p>
+        </div>
+            counter++;
+            if (counter == 6)
+            {
+            <br>;
+                counter = 0;
+            }
+        }
+    }
+</div>

@@ -1,0 +1,38 @@
+﻿@model GameStore.Models.Purchase
+@{
+    ViewBag.Title = "YandexPay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var game = ViewBag.Game;
+    var user = ViewBag.User;
+}
+
+@using (Html.BeginForm())
+{
+<div class="form">
+    <img src="https://photo.virtualbrest.by/uploads/2017/08/08/image011.jpg" class="payImg" style="width:190px">
+    <div class="fields_block">
+        <label>Номер счета(14 цифр):</label>
+        <div class="field">
+            <input class="custominput"type="text" name="name" required pattern="[0-9]{14}">
+        </div>
+    </div>
+    <div class="fields_block">
+        <div class="field">
+            <label>Адрес электронной почты:</label>
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="fields_block">
+        <div class="field">
+            <label>Сумма: @game.Price$</label>
+        </div>
+    </div>
+    <input type="hidden" name="UserId" value="@user.Id" required>
+    @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+    <div class="field">
+        <button type="button" onclick="document.location='@Url.Action("StorePage","Home",new {search = " "}))'">Отмена</button>
+        <button type="submit">Подтвердить</button>
+    </div>
+</div>
+}

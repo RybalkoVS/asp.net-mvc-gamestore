@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "CompletePay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var key = ViewBag.LicenseKey;
+    var user = ViewBag.User;
+}
+<div>
+    <h4>@user.Login, Спасибо за покупку!</h4>
+    <h4>Ваш ключ активации: @key</h4>
+</div>
+<div class="field">
+    <button type="button" onclick="document.location='@Url.Action("StorePage","Home", new {search = " "})'">Вернуться в магазин</button>
+</div>
+
